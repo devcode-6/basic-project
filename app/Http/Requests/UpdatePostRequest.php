@@ -22,7 +22,9 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|unique:posts,title,' . $this->id,
+            'desc' => 'nullable|string',
+            'status' => 'required|in:1,2,3',
         ];
     }
 }
