@@ -4,34 +4,9 @@ namespace App\Repositories;
 
 use App\Models\Company;
 
-class CompanyRepository
-{
-    public function all()
+class CompanyRepository extends BaseRepository {
+    public function __construct(Company $model)
     {
-        return Company::paginate(10);
-    }
-
-    public function find($id)
-    {
-        return Company::findOrFail($id);
-    }
-
-    public function create(array $data)
-    {
-        return Company::create($data);
-    }
-
-    public function update($id, array $data)
-    {
-        $company = Company::findOrFail($id);
-        $company->update($data);
-
-        return $company;
-    }
-
-    public function delete($id)
-    {
-        $company = Company::findOrFail($id);
-        return $company->delete();
+        parent::__construct($model);
     }
 }
